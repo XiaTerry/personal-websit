@@ -1,6 +1,6 @@
 <template>
 <div>
-     <header class="header">
+     <header class="header" v-show="isShow" ref="head">
       <div class="header-content">
         <div class="header-logo">
           <a href="#">H.</a>
@@ -42,7 +42,11 @@
 <script>
 
 export default {
-    
+    data () {
+      return {
+        isShow:true,
+      }
+    }, 
 }
 </script>
 
@@ -55,10 +59,11 @@ export default {
   padding: 35px 0;
   width: 100%;
   height: 20px;
-//   background: #ff8;
+  background: #fff;
+  z-index: 99;
   a{
     outline: none;
-    color: #fff;
+    color: #000;
   }
   &-content{
     width: 100%;
