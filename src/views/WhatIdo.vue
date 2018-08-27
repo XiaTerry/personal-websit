@@ -4,7 +4,7 @@
         <div>
             <h2 class="whatido-title">What I Do</h2>
         </div>
-        <div class="whatido-content1">
+        <div :class="['whatido-content1',isAct == true?'animated fadeInDown':'']">
             <el-row :gutter="20">
                 <el-col :span="8">
                     <div class="grid-content bg-purple">
@@ -41,7 +41,7 @@
                 </el-col>
             </el-row>
         </div>
-        <div class="whatido-content2">
+        <div :class="['whatido-content2',isAct == true?'animated fadeInUp':'']">
              <el-row :gutter="20">
                 <el-col :span="8">
                     <div class="grid-content bg-purple">
@@ -84,7 +84,23 @@
 </template>
 <script>
 export default {
-    
+    data(){
+        return{
+            isAct:false,
+        }
+    },
+    mounted(){
+     window.addEventListener('scroll',()=>{
+        if(window.scrollY>=1400){
+          this.isAct = true;
+        }else{
+          this.isAct = false;
+        }
+      });
+    window.onresize=()=>{
+        console.log(this.$children[0].$el.span);
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -103,7 +119,6 @@ export default {
         &-fw{
             width: 1020px;
             height: 554px;
-            // background: #ff0;
             margin: 0 auto;
         }
         &-content1{
@@ -116,12 +131,6 @@ export default {
         }
         
     }
-  .bg-purple {
-    // background: #d3dce6;
-  }
-  .bg-purple-light {
-    // background: #e5e9f2;
-  }
   .grid-content {
     text-align: left;
     border-radius: 4px;
@@ -132,7 +141,6 @@ export default {
   }
   .icon{
     margin-top: 10px;
-    // float: left;
     text-align: center;
     line-height: 44px;
     height: 44px;
@@ -141,8 +149,19 @@ export default {
     border: 1px solid #000;
   }
   .iconfont{
-    //   padding: 10px 10px 0;
-      text-align: left;
+    text-align: left;
   }
-
+@media (max-width: 1079px){
+    .whatido{
+        &-fw{
+            width: 100%;
+        }
+        &-title{
+            margin-left:5% ;
+        }
+        &-content1,&-content2{
+            margin: 0 5%;
+        }
+    }
+}
 </style>

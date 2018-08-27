@@ -2,30 +2,36 @@
     <div class="project">
         <div class="project-content">
             <h1>Project</h1>
-            <h2>App</h2>
+            <div class="project-small-title"><span>APP</span><span>APPlet</span></div>
             <div class="project-content-app">
-                
-            </div>
-            <div class="applet animated fadeInDown">
-            <h2>Applet</h2>
-                <div class="project-content-app project-content-applet">
-                    
+                <div>
+                    <iframe src="dist/index.html" frameborder="0" width="320" height="568"></iframe>
                 </div>
             </div>
-            <div class="project-web animated fadeInDown">
-                <h2>Website</h2>
-                <div class="project-content-web">
-                    <iframe src="" frameborder="0" height="667" width="1020"></iframe>
+            <div class="applet">
+                <div class="project-content-app project-content-applet">
+                    <div></div>
                 </div>
             </div>
         </div>
+        <div class="webobj">
+            <h2>Website</h2>
+            <span class="website-content">
+                <router-link to="/tmall">Tmall</router-link>
+            </span>
+            <span class="website-content">
+                <router-link to="/starbucks">STARBUCKS</router-link>
+            </span>
+        </div>
+        
     </div>
 </template>
 
 <script>
+
 export default {
     components:{
-        
+        // Webobj,
     }
 }
 </script>
@@ -33,19 +39,33 @@ export default {
 <style lang="scss" scoped>
 .project{
     width: 100%;
-    height: 1662px;
+    height: 700px;
+    padding: 100px 0;
     background: #fff;
+    &-small-title{
+        span{
+            font-size: 18px;
+        }
+        span:nth-child(2){
+            // float: left;
+            
+            margin-left: 300px;
+        }
+    }
     &-content{
-        text-align: left;
+        text-align: center;
         width: 1020px;
         margin: 0 auto;
         height: 100%;
         background: #fff;
+        h2{
+            width: 100px;
+        }
         &-app{
             float: left;
-            width: 375px;
-            min-width: 375px;
-            height: 667px;
+            width: 320px;
+            min-width: 320px;
+            height: 568px;
             background: #fafafa;
             border-radius: 6px;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2),
@@ -53,24 +73,27 @@ export default {
         }
         &-applet{
             float: right;
-
+            // margin-left: 100px;
         }
-        &-web{
-            // margin-top: 667px;
-            width: 100%;
-            height: 667px;
-            background: #fafafa;
-             border-radius: 6px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2),
-            0 1px 2px rgba(0, 0, 0, 0.2);
-        }
+        
     }
 }
-.project-web{
-    margin-top: 667px;
+.webobj{
+    margin-top: 100px;
 }
-.applet{
-    margin-top: -60px;
-    float: right;
+.website-content{
+    margin-right: 10px;
+    a:hover{
+      box-shadow: inset 0 -6px #ede574;
+      transition: all 0.4s ease 0s;
+    }
+    a{
+        outline: none;
+        color: #000;
+        font-size: 18px;
+    }
+    
+    
 }
+
 </style>
