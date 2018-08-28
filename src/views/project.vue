@@ -2,28 +2,22 @@
     <div class="project">
         <div class="project-content">
             <h1>Project</h1>
-            <div class="project-small-title"><span>APP</span><span>APPlet</span></div>
+            <div class="project-small-title"><span>APP</span></div>
             <div class="project-content-app">
                 <div>
-                    <iframe src="dist/index.html" frameborder="0" width="320" height="568"></iframe>
-                </div>
-            </div>
-            <div class="applet">
-                <div class="project-content-app project-content-applet">
-                    <div></div>
+                    <iframe src="dist/index.html" frameborder="0" scrolling="no" width="320" height="568"></iframe>
                 </div>
             </div>
         </div>
         <div class="webobj">
-            <h2>Website</h2>
+            <h2>DEMO</h2>
             <span class="website-content">
-                <router-link to="/tmall">Tmall</router-link>
+                <router-link to="/css-animation">css-animation</router-link>
             </span>
             <span class="website-content">
-                <router-link to="/starbucks">STARBUCKS</router-link>
+                <router-link to="/jquery">jquery</router-link>
             </span>
         </div>
-        
     </div>
 </template>
 
@@ -47,8 +41,6 @@ export default {
             font-size: 18px;
         }
         span:nth-child(2){
-            // float: left;
-            
             margin-left: 300px;
         }
     }
@@ -62,7 +54,8 @@ export default {
             width: 100px;
         }
         &-app{
-            float: left;
+            // text-align: center;
+            margin: 0 auto;
             width: 320px;
             min-width: 320px;
             height: 568px;
@@ -71,11 +64,6 @@ export default {
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2),
             0 1px 2px rgba(0, 0, 0, 0.2);
         }
-        &-applet{
-            float: right;
-            // margin-left: 100px;
-        }
-        
     }
 }
 .webobj{

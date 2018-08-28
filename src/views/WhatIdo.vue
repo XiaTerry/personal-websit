@@ -9,7 +9,7 @@
                 <el-col :span="8">
                     <div class="grid-content bg-purple">
                         <div class="iconfont">
-                            <i class="el-icon-edit icon"></i>
+                            <i class="iconfont icon-ui"></i>
                         </div>
                         <div class="whatido-content1-name">UI/UX DESIGN</div>
                         <p>
@@ -20,7 +20,7 @@
                 <el-col :span="8">
                     <div class="grid-content bg-purple-light">
                         <div class="iconfont">
-                            <i class="el-icon-edit icon"></i>
+                            <i class="iconfont icon-xiangji"></i>
                         </div>
                         <div class="whatido-content1-name">BRAND IDENTITY</div>
                         <p>
@@ -31,7 +31,7 @@
                 <el-col :span="8">
                     <div class="grid-content bg-purple">
                         <div class="iconfont">
-                            <i class="el-icon-edit icon"></i>
+                            <i class="iconfont icon-deng"></i>
                         </div>
                         <div class="whatido-content1-name">WEB DESIGN</div>
                         <p>
@@ -46,7 +46,7 @@
                 <el-col :span="8">
                     <div class="grid-content bg-purple">
                         <div class="iconfont">
-                            <i class="el-icon-edit icon"></i>
+                            <i class="iconfont icon-app"></i>
                         </div>
                         <div class="whatido-content1-name">MOBILE APPS</div>
                         <p>
@@ -57,7 +57,7 @@
                 <el-col :span="8">
                     <div class="grid-content bg-purple-light">
                         <div class="iconfont">
-                            <i class="el-icon-edit icon"></i>
+                            <i class="iconfont icon-deng"></i>
                         </div>
                         <div class="whatido-content1-name">ANALYTICS</div>
                         <p>
@@ -68,7 +68,7 @@
                 <el-col :span="8">
                     <div class="grid-content bg-purple">
                         <div class="iconfont">
-                            <i class="el-icon-edit icon"></i>
+                            <i class="iconfont icon-xiangji"></i>
                         </div>
                         <div class="whatido-content1-name">PHOTOGRAPHY</div>
                         <p>
@@ -98,12 +98,19 @@ export default {
         }
       });
     window.onresize=()=>{
-        console.log(this.$children[0].$el.span);
+        // console.log(this.$children[0].$el.span);
     }
   }
 }
 </script>
 <style lang="scss" scoped>
+i{
+    font-size: 26px;
+    cursor: pointer;
+}
+i:hover{
+    color: #ede574;
+}
     .whatido{
         width: 100%;
         height: 600px;
@@ -139,22 +146,12 @@ export default {
       color: #9ca3ad;  
     }
   }
-  .icon{
-    margin-top: 10px;
-    text-align: center;
-    line-height: 44px;
-    height: 44px;
-    width: 33px;
-    font-size: 20px;
-    border: 1px solid #000;
-  }
-  .iconfont{
-    text-align: left;
-  }
 @media (max-width: 1079px){
     .whatido{
+        height: 766px;
         &-fw{
             width: 100%;
+            height: 766px;
         }
         &-title{
             margin-left:5% ;
@@ -162,6 +159,24 @@ export default {
         &-content1,&-content2{
             margin: 0 5%;
         }
+    }
+    .el-col-8{
+        width: 50%;
+    }
+}
+@media (max-width: 720px) {
+    .el-col-8{
+        width: 100%;
+    }
+    .whatido{
+        height: 1070px;
+        padding: 90px 0 60px 0;
+        &-fw{
+            height: 100%;
+        }
+    }
+    .grid-content{
+        min-height: 100px;
     }
 }
 </style>

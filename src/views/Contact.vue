@@ -2,7 +2,7 @@
     <div class="contact">
         <div class="contact-content">
             <h1>Contact Me</h1>
-            <form action="">
+            <form action="" class="">
                 <el-row>
                 <el-col :span="12">
                     <div class="grid-content bg-purple">
@@ -61,7 +61,7 @@ export default {
     width: 100%;
     background: #fff;
     &-content{
-        width: 1020px;
+        width: 1060px;
         height: 100%;
         background: #fff;
         margin: 0 auto;
@@ -109,5 +109,45 @@ a:hover{
     border-radius: 4px;
     min-height: 66px;
   }
- 
+ @media (max-width: 1079px){
+     .contact{
+         &-content{
+            max-width: 100%;
+            // padding: 0 5%;
+            margin: 0 5%;
+         }
+     }
+    .value{
+        input{
+            width: 78%;
+            
+        }
+        textarea{
+            width:  90%;
+            height: 40px;
+        }
+    }
+ }
+ @media (max-width: 720px){
+     .contact{
+         &-content{
+            max-width: 100%;
+            margin: 0 5%;
+         }
+     }
+     .bg-purple {
+        float: none;
+     }
+     .el-col-12{
+         width: 100%;
+     }
+    .value{
+        input{
+            height: 40px;
+        }
+        textarea{
+            height: 40px;
+        }
+    }
+ }
 </style>
