@@ -25,8 +25,8 @@ export default {
     width: 100%;
     background: #fafafa;
     &-content{
+        text-align: center;
         height: 66px;
-        width: 100%;
         padding: 120px 0;
     }
     a{
@@ -38,4 +38,5 @@ export default {
         color: #292929;
     }
 }
+
 </style>

@@ -154,7 +154,8 @@ i:hover{
             height: 766px;
         }
         &-title{
-            margin-left:5% ;
+            width: 100%;
+            padding-left: 5%;
         }
         &-content1,&-content2{
             margin: 0 5%;
@@ -166,13 +167,18 @@ i:hover{
 }
 @media (max-width: 720px) {
     .el-col-8{
-        width: 100%;
+        width: 99.9%;
     }
     .whatido{
-        height: 1070px;
+        width: 100%;
+        height: 1190px;
         padding: 90px 0 60px 0;
         &-fw{
             height: 100%;
+        }
+        &-title{
+            width: 100%;
+            padding-left: 5% 0;
         }
     }
     .grid-content{

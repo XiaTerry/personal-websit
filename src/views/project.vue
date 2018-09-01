@@ -1,6 +1,6 @@
 <template>
     <div class="project">
-        <div class="project-content">
+        <div class="project-content" style="display:none" ref="project">
             <h1>Project</h1>
             <div class="project-small-title"><span>APP</span></div>
             <div class="project-content-app">
@@ -26,6 +26,21 @@
 export default {
     components:{
         // Webobj,
+    },
+    mounted(){
+        window.onload=()=>{
+            window.onresize=(e)=>{
+                console.log(e);
+                if(e.currentTarget.innerWidth<720){
+                    this.$refs.project.style.display = 'block';
+                }
+                else{
+                    this.$refs.project.style.display = 'none';
+                }
+            // console.log(this.$refs.project);
+        }
+        }
+        
     }
 }
 </script>
@@ -33,7 +48,7 @@ export default {
 <style lang="scss" scoped>
 .project{
     width: 100%;
-    height: 700px;
+    height: 50px;
     padding: 100px 0;
     background: #fff;
     &-small-title{
@@ -66,9 +81,7 @@ export default {
         }
     }
 }
-.webobj{
-    margin-top: 100px;
-}
+
 .website-content{
     margin-right: 10px;
     a:hover{
@@ -83,5 +96,20 @@ export default {
     
     
 }
-
+@media (max-width: 1079px) {
+    .project{
+        &-content{
+            width: 100%;
+            // background: #0f0;
+        }
+    }
+}
+@media (max-width: 720px) {
+    .project{
+        height: 700px;
+    }
+    .webobj{
+    margin-top: 100px;
+}
+}
 </style>

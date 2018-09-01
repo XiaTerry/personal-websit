@@ -1,21 +1,18 @@
 <template>
 <div>
-    <header :class="['header', isShow == false?'selected animated fadeInDown':'']" >
+  
+    <header :class="['header', isShow == false?'selected animated fadeInDown':'']" ref="head">
       <div class="header-content">
         <div class="header-logo">
           <a href="#">H.</a>
         </div>
+        <a href="#"><i class="iconfont icon-menu"  @click="isshow" ref="menu"></i></a>
         <div class="header-top-menu">
           <ul>
-            <li><a href="#">ABOUT</a></li>
-            <li><a href="#">WHAT I DO</a></li>
-            <li><a href="#">WORKS</a></li>
-            <li><a href="#">BLOG</a></li>
-            <li><a href="#">CONTACT</a></li>
+            <li v-for="(item,index) in list" :key="index"><a href="#" @click="selected(index)" :class="selectedLiIndex == index? 'selected':''">{{item}}</a></li>
           </ul>
         </div>
-        <i :class="['iconfont icon-searchclose',showMenu == true?'animated fadeInRight':'']" v-show="showMenu" @click="showClose"></i>
-        <i class="iconfont icon-menu" v-show="isactive" @click="isshow" ref="menu"></i>
+       <i :class="['iconfont icon-searchclose',showMenu == true?'animated fadeInRight':'']"  @click="showClose" ref="close" style="display:none"></i>
       </div>
     </header>
     <div class="section">
@@ -31,11 +28,9 @@
     </div>
    <div :class="['active',showMenu == true?'animated fadeInRight':'']" v-show="showMenu">
     <ul>
-      <li><a href="#">ABOUT</a></li>
-      <li><a href="#">WHAT I DO</a></li>
-      <li><a href="#">WORKS</a></li>
-      <li><a href="#">BLOG</a></li>
-      <li><a href="#">CONTACT</a></li>
+      <li v-for="(item,index) in list" :key="index">
+        <a href="#" @click="selected(index)" :class="selectedLiIndex == index? 'selected':''">{{item}}</a>
+      </li>
     </ul>
   </div>
 </div>
@@ -46,20 +41,28 @@
 export default {
     data () {
       return {
+        list:['ABOUT','WHAT I DO','WORKS','BLOG','CONTACT'],
         isShow:true,
         sectionTitle:['UI/UX Design','Brand Identity','Web Design','Mobile Apps','Analytics','Photography'],
         nowIndex:0,
         index:null,
         isactive:false,
         showMenu:false,
+        selectedLiIndex:-1,
       }
     }, 
     methods:{
      isshow(){
       this.showMenu = true;
+      // console.log(this);
+      this.$refs.close.style.display = 'block';
      },
      showClose(){
        this.showMenu = false;
+       this.$refs.close.style.display = 'none';
+     },
+     selected(index){
+       this.selectedLiIndex = index;
      }
     },
     mounted(){
@@ -68,24 +71,30 @@ export default {
       if(this.nowIndex == this.sectionTitle.length){
         this.nowIndex = 0;
       }
-    },1500)
-    window.onresize=()=>{  
-      let _this = this;
-      if(window.outerWidth<=1095){
-        _this.isactive = true;
-      }else{
-        _this.isactive = false;
-      }
-    }  
-    window.addEventListener('scroll',()=>{
+    },1500);
+        window.onresize=(e)=>{
+          if(e.currentTarget.innerWidth<=1079){
+            // console.log(this.$refs.menu.style);
+            // console.log(e.currentTarget.innerWidth);
+            this.$refs.menu.style.display = 'block';
+          }else{
+            this.$refs.menu.style.display = 'none';
+          }
+        }
+       window.addEventListener('scroll',(e)=>{
+        //  console.log(e.currentTarget.onresize=(e)=>{});
+         
         if(window.scrollY>=10){
           this.isShow = false;
-          this.isactive = true;
+          // this.$refs.menu.style.display = 'block';
           this.$refs.menu.style.color = '#000';
+          this.$refs.close.style.color = '#000';
+          this.$refs.head.style.boxShadow = '#ccc 0 0 100px';
         }else{
           this.isShow = true;
-          this.isactive = false;
           this.$refs.menu.style.color = '#fff';
+          this.$refs.close.style.color = '';
+          this.$refs.head.style.boxShadow = '';
         }
       });
     },
@@ -93,12 +102,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.selected{
+  box-shadow: inset 0 -6px #ede574;
+  transition: all 0.4s ease 0s;
+}
 .icon-searchclose{
   font-size: 26px;
   position: absolute;
   right: 250px;
-  cursor:pointer;
+  margin: -10px 0;
+  cursor: pointer;
+  color: #fff;
 }
+ .icon-menu{
+  width: 24px;
+  height: 24px;
+  float: right;
+  cursor: pointer;
+  margin: -10px 25px;
+  font-size: 26px;
+  color: #fff;
+  display: none;
+}
+
 .active{
     position: fixed;
     bottom: 0;
@@ -136,6 +162,7 @@ export default {
   width: 100%;
   height: 20px;
   z-index: 999;
+  // box-shadow: #ccc 0 0 100px;
   &.selected{
     color: #000;
     background: #fff;
@@ -150,7 +177,6 @@ export default {
     letter-spacing: 0.2em;
   }
   &-content{
-    width: 100%;
     height: 25px;
   }
   &-logo{
@@ -203,6 +229,10 @@ export default {
 }
 @media (max-width: 1079px){
   .header{
+    &-content{
+      width: 100%;
+    }
+    width: 100%;
     a{
       color: #000;
     }
@@ -212,12 +242,5 @@ export default {
       display: none;
     }
   }
-  .icon-menu{
-  float: right;
-  cursor: pointer;
-  margin-right: 40px;
-  font-size: 26px;
-  color: #fff;
-}
 }
 </style>

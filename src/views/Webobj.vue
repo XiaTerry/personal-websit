@@ -16,7 +16,7 @@ export default {
 <style lang="scss" scoped>
 .project-web{
     width: 100%;
-    height: 1520px;
+    height: 2540px;
     background: #fff;
     margin-top: 100px;
     &-content{
@@ -29,7 +29,26 @@ export default {
         0 1px 2px rgba(0, 0, 0, 0.2);
     }   
 }
-
-
+@media (max-width: 1079px) {
+    .project-web{
+        &-content{
+            width: 100%;
+            // background: #f00;
+            margin: 5% 0;
+        }
+    }
+    overflow: hidden;
+}
+@media (max-width: 720px) {
+    .project-web{
+        height: 4940px;
+        &-content{
+            // width: 100%;
+            height: 100%;
+            // background: #f00;
+            margin: 5% 0;
+        }
+    }
+}
 
 </style>

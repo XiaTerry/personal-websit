@@ -113,8 +113,7 @@ a:hover{
      .contact{
          &-content{
             max-width: 100%;
-            // padding: 0 5%;
-            margin: 0 5%;
+            padding: 0 5%;
          }
      }
     .value{
@@ -132,7 +131,7 @@ a:hover{
      .contact{
          &-content{
             max-width: 100%;
-            margin: 0 5%;
+            padding: 0 5%;
          }
      }
      .bg-purple {

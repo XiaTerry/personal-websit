@@ -41,6 +41,9 @@ export default {
 </script>
 
 <style lang="scss">
+body{
+  overflow-x: hidden;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -48,5 +51,7 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
+@media (max-width: 1079px) {
+  
+}
 </style>

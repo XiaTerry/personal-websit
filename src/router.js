@@ -2,8 +2,9 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Webobj from '@/views/Webobj.vue';
-import Tmall from '@/views/Tmall.vue';
-import Starbucks from '@/views/Starbucks.vue';
+import CssAnimation from '@/views/CssAnimation.vue';
+import Jquery from '@/views/Jquery.vue';
+import Contact from '@/views/Contact.vue';
 Vue.use(Router);
 
 export default new Router({
@@ -14,16 +15,21 @@ export default new Router({
       component: Webobj,
       children:[
         {
-          path:'/tmall',
-          name:'tmall',
-          component:Tmall
+          path:'/css-animation',
+          name:'cssanimation',
+          component:CssAnimation
         },
         {
-          path:'/starbucks',
-          name:'Starbucks',
-          component:Starbucks
+          path:'/jquery',
+          name:'jquery',
+          component:Jquery
         }
       ]
     },
+    {
+      path:'/contact',
+      name:'contact',
+      component:Contact
+    }
   ],
 });
