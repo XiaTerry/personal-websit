@@ -4,15 +4,17 @@
     <header :class="['header', isShow == false?'selected animated fadeInDown':'']" ref="head">
       <div class="header-content">
         <div class="header-logo">
-          <a href="#">H.</a>
+          <a href="#" class="h-logo" ref="h">H.</a>
+          <a href="#"><i class="iconfont icon-menu"  @click="isshow" ref="menu"></i></a>
+          <a href="#"><i :class="['iconfont icon-searchclose',showMenu == true?'animated fadeInRight':'']"  @click="showClose" ref="close" style="display:none"></i></a>
         </div>
-        <a href="#"><i class="iconfont icon-menu"  @click="isshow" ref="menu"></i></a>
+        <!-- <a href="#"></a> -->
         <div class="header-top-menu">
           <ul>
             <li v-for="(item,index) in list" :key="index"><a href="#" @click="selected(index)" :class="selectedLiIndex == index? 'selected':''">{{item}}</a></li>
           </ul>
         </div>
-       <i :class="['iconfont icon-searchclose',showMenu == true?'animated fadeInRight':'']"  @click="showClose" ref="close" style="display:none"></i>
+       
       </div>
     </header>
     <div class="section">
@@ -54,12 +56,13 @@ export default {
     methods:{
      isshow(){
       this.showMenu = true;
-      // console.log(this);
+      this.$refs.menu.style.display = 'none';
       this.$refs.close.style.display = 'block';
      },
      showClose(){
-       this.showMenu = false;
-       this.$refs.close.style.display = 'none';
+      this.showMenu = false;
+      this.$refs.menu.style.display = 'block';
+      this.$refs.close.style.display = 'none';
      },
      selected(index){
        this.selectedLiIndex = index;
@@ -77,8 +80,10 @@ export default {
             // console.log(this.$refs.menu.style);
             // console.log(e.currentTarget.innerWidth);
             this.$refs.menu.style.display = 'block';
+            this.$refs.h.style.display = 'none';
           }else{
             this.$refs.menu.style.display = 'none';
+            this.$refs.h.style.display = 'block';
           }
         }
        window.addEventListener('scroll',(e)=>{
@@ -115,20 +120,21 @@ export default {
   color: #fff;
 }
  .icon-menu{
+  position: absolute;
+  left: 40px;
   width: 24px;
   height: 24px;
-  float: right;
   cursor: pointer;
-  margin: -10px 25px;
+  margin-top: -10px;
   font-size: 26px;
-  color: #fff;
-  display: none;
+  color: #000;
 }
 
 .active{
     position: fixed;
     bottom: 0;
     right: 0;
+    // left: 0;
     top: 0;
     z-index: 999;
     background: #fff;
@@ -182,9 +188,10 @@ export default {
   &-logo{
     width: 34px;
     margin-left: 40px;
-    a{
+    .h-logo{
       float: left;
       font-size: 20px;
+      display: none;
     }
   }
   &-top-menu{
